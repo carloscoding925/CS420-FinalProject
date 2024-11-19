@@ -8,7 +8,7 @@ import {
 
 import "./tailwind.css";
 
-export function Layout({ children }: { children: React.ReactNode }) {
+export default function Component() {
   return (
     <html lang="en">
       <head>
@@ -18,14 +18,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
         <ScrollRestoration />
         <Scripts />
+        root page
+        <div>
+          <Outlet />
+        </div>
       </body>
     </html>
   );
-}
-
-export default function Component() {
-  return <Outlet />;
 }
