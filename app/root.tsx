@@ -10,6 +10,7 @@ import {
 import "./tailwind.css";
 import Header from "./components/header";
 import Footer from "./components/footer";
+import Sidebar from "./components/sidebar";
 
 export default function Component() {
   return (
@@ -26,8 +27,11 @@ export default function Component() {
         <div className="shrink-0">
           <Header />
         </div>
-        <div className="flex-1">
-          <Outlet />
+        <div className="flex flex-1">
+          <Sidebar />
+          <div className="flex-grow">
+            <Outlet />
+          </div>
         </div>
         <div className="shrink-0">
           <Footer />
