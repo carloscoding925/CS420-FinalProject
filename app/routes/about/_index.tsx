@@ -1,8 +1,8 @@
 export default function Component() {
     return (
         <div>
-            <div className="flex flex-col items-center justify-center pt-2">
-                <div className="w-[1000px] h-[600px] border border-gray-400 flex items-start justify-center">
+            <div className="flex flex-col items-center justify-center pt-2 pb-2">
+                <div className="w-[1000px] h-[600px] border border-gray-400 rounded-2xl flex items-start justify-center">
                     <div className="text-center">
                         <h1 className="font-bold text-4xl pt-6">
                             About

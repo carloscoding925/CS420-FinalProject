@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { darcula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export function ComponentView(props: { component: React.ReactNode; code: string; }) {
     const [showComponent, setShowComponent] = useState<boolean>(true);
@@ -18,19 +17,19 @@ export function ComponentView(props: { component: React.ReactNode; code: string;
 
     return (
         <div>
-            <div className="p-4border border-gray-300 rounded">
+            <div className="p-4border border-gray-300 rounded pb-2">
                 {showComponent ? (
                     <div className="">
                         {props.component}
                     </div>
                 ) : (
-                    <SyntaxHighlighter language="tsx" style={darcula}>
+                    <SyntaxHighlighter language="tsx" >
                         {trimLeadingWhitespace(props.code)}
                     </SyntaxHighlighter>
                 )}
                 <button
                     onClick={() => setShowComponent(!showComponent)}
-                    className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+                    className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
                 >
                     {showComponent ? "Show Code" : "Show Component"}
                 </button>
