@@ -10,7 +10,7 @@ export function TextInput(props: { id: string; label: string; required: boolean;
                     name={props.id}
                     type="text"
                     required={props.required}
-                    className="border-b border-gray-400 focus:outline-none focus:border-blue-500 p-2"
+                    className="border-b border-gray-400 focus:outline-none focus:border-blue-500 p-[6px]"
                     onChange={e => {
                         if (props.isNumeric) {
                             e.target.value = e.target.value.replace(/[^0-9]/g, "");

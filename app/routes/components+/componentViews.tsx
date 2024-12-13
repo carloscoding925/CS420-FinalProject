@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 
-export function ComponentView(props: { component: React.ReactNode; code: string; }) {
+export function ComponentView(props: { component: React.ReactNode; code: string; onToggle: () => void; isExpanded: boolean;}) {
     const [showComponent, setShowComponent] = useState<boolean>(true);
 
     function trimLeadingWhitespace(text: string): string {
@@ -15,9 +15,14 @@ export function ComponentView(props: { component: React.ReactNode; code: string;
         return trimmedLines.join('\n');
     }
 
+    const handleToggle = () => {
+        setShowComponent(!showComponent);
+        props.onToggle();
+    }
+
     return (
         <div>
-            <div className="p-4border border-gray-300 rounded pb-2">
+            <div className={`p-4border border-gray-300 rounded pb-2 ${props.isExpanded ? 'w-full' : 'w-auto'}`}>
                 {showComponent ? (
                     <div className="">
                         {props.component}
@@ -28,7 +33,7 @@ export function ComponentView(props: { component: React.ReactNode; code: string;
                     </SyntaxHighlighter>
                 )}
                 <button
-                    onClick={() => setShowComponent(!showComponent)}
+                    onClick={handleToggle}
                     className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
                 >
                     {showComponent ? "Show Code" : "Show Component"}
