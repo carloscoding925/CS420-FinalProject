@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 
-export function ComponentView(props: { component: React.ReactNode; code: string; onToggle: () => void; isExpanded: boolean;}) {
+export function ComponentView(props: { component: React.ReactNode; code: string; onToggle: () => void; isExpanded: boolean; }) {
     const [showComponent, setShowComponent] = useState<boolean>(true);
 
     function trimLeadingWhitespace(text: string): string {
@@ -22,7 +22,7 @@ export function ComponentView(props: { component: React.ReactNode; code: string;
 
     return (
         <div>
-            <div className={`p-4border border-gray-300 rounded pb-2 ${props.isExpanded ? 'w-full' : 'w-auto'}`}>
+            <div className={`p-4 border border-gray-300 rounded pb-2 ${props.isExpanded ? 'w-full' : 'w-auto'}`}>
                 {showComponent ? (
                     <div className="">
                         {props.component}
