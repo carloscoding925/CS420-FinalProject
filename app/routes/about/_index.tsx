@@ -1,7 +1,7 @@
 export default function Component() {
     return (
         <div>
-            Hello world!
+            About index page
         </div>
     );
 }

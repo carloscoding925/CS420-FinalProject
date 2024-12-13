@@ -1,7 +1,7 @@
 export default function Footer() {
     return (
-        <div>
-            <div className="flex flex-row bg-blue-400 h-[80px] text-white">
+        <div className="">
+            <footer className="flex flex-row bg-blue-400 h-[80px] text-white">
                 <div className="flex flex-row justify-left space-x-16 w-full pb-2 pl-4">
                     <div className="flex flex-col justify-end h-full">
                         <h1 className="text-xl font-bold font-serif">
@@ -21,7 +21,7 @@ export default function Footer() {
                         </h1>
                     </div>
                 </div>
-            </div>
+            </footer>
         </div>
     )
 }

@@ -20,14 +20,18 @@ export default function Component() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="flex flex-col min-h-screen">
         <ScrollRestoration />
         <Scripts />
-        <Header />
-        <div>
+        <div className="shrink-0">
+          <Header />
+        </div>
+        <div className="flex-1">
           <Outlet />
         </div>
-        <Footer />
+        <div className="shrink-0">
+          <Footer />
+        </div>
       </body>
     </html>
   );
