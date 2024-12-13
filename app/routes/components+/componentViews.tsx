@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { darcula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export function ComponentView(props: { component: React.ReactNode; code: string; }) {
     const [showComponent, setShowComponent] = useState<boolean>(true);
@@ -22,11 +24,9 @@ export function ComponentView(props: { component: React.ReactNode; code: string;
                         {props.component}
                     </div>
                 ) : (
-                    <pre className="bg-gray-100 p-4 rounded overflow-x-auto">
-                        <code className="text-sm whitespace-pre-wrap">{
-                            trimLeadingWhitespace(props.code)}
-                        </code>
-                    </pre>
+                    <SyntaxHighlighter language="tsx" style={darcula}>
+                        {trimLeadingWhitespace(props.code)}
+                    </SyntaxHighlighter>
                 )}
                 <button
                     onClick={() => setShowComponent(!showComponent)}
