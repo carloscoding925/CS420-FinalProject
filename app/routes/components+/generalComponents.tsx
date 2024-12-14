@@ -25,7 +25,6 @@ export default function Component() {
                     Input Fields
                 </h1>
             </div>
-
             <div className="flex flex-wrap pl-[30px] pt-[20px] space-x-20">
                 <ComponentView
                     component={

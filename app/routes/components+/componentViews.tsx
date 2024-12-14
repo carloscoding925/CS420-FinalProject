@@ -20,6 +20,11 @@ export function ComponentView(props: { component: React.ReactNode; code: string;
         props.onToggle();
     }
 
+    const handleCopy = () => {
+        navigator.clipboard.writeText(props.code);
+        alert('Copied to clipboard!');
+    }
+
     return (
         <div>
             <div className={`p-4 border border-gray-300 rounded pb-2 ${props.isExpanded ? 'w-full' : 'w-auto'}`}>
@@ -28,16 +33,30 @@ export function ComponentView(props: { component: React.ReactNode; code: string;
                         {props.component}
                     </div>
                 ) : (
-                    <SyntaxHighlighter language="tsx" >
-                        {trimLeadingWhitespace(props.code)}
-                    </SyntaxHighlighter>
+                    <div>
+                        <SyntaxHighlighter language="tsx" >
+                            {trimLeadingWhitespace(props.code)}
+                        </SyntaxHighlighter>
+                    </div>
                 )}
-                <button
-                    onClick={handleToggle}
-                    className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
-                >
-                    {showComponent ? "Show Code" : "Show Component"}
-                </button>
+                <div className="flex flex-row justify-start space-x-10">
+                    <div className="">
+                        <button
+                            onClick={handleToggle}
+                            className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+                        >
+                            {showComponent ? "Show Code" : "Show Component"}
+                        </button>
+                    </div>
+                    <div className={`${showComponent === true ? 'hidden' : ''}`}>
+                        <button
+                            onClick={handleCopy}
+                            className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+                        >
+                            Copy Code
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     )
