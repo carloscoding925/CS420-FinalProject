@@ -1,9 +1,14 @@
+// Carlos Hernandez
+
+// Radio Button Component
 export function RadioButton(props: { id: string; label: string; options: string[]; }) {
     return (
         <div>
+            {/* This is the label for the radio button */}
             <label htmlFor={props.id} className="text-lg font-bold">
                 {props.label}
             </label>
+            {/* This displays all the options for the radio button */}
             <div>
                 {props.options.map(option => (
                     <div key={option} className="flex items-center space-x-2">

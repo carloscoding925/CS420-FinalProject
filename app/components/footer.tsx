@@ -1,3 +1,6 @@
+// Carlos Hernandez
+
+// The footer for the website, shown on every page
 export default function Footer() {
     return (
         <div className="">

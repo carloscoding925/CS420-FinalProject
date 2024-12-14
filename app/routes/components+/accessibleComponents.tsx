@@ -1,11 +1,15 @@
+// Carlos Hernandez
+
 import { useState } from "react";
 import { ScreenReader } from "~/components/screen-reader";
-import { ComponentView } from "./componentViews";
+import { ComponentView } from "../../components/componentViews";
 import { ImageRecolorer } from "~/components/image-recolorer";
-import { SpeechToText } from "~/components/speech-to-text";
 import { MagnifyingGlass } from "~/components/magnifying-glass";
 
 export default function Component() {
+    // Same as in General Components, this state variable and the function below keep track of which component
+    // has the show code option selected so that the rest of the components on the page wrap around the code
+    // view window. 
     const [expandedComponent, setExpandedComponent] = useState<string | null>(null);
 
     const handleToggle = (componentName: string) => {
@@ -14,11 +18,13 @@ export default function Component() {
 
     return (
         <div>
+            {/* Headers */}
             <div className="flex flex-row place-content-center">
                 <h1 className="text-4xl font-bold pt-2">
                     Accessible Components
                 </h1>
             </div>
+            {/* Accessible Components description of how the ComponentView component works is on the componentViews.tsx page*/}
             <div className="flex flex-wrap pl-[30px] pt-[20px] space-x-12">
                 <ComponentView
                     component={

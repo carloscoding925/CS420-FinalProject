@@ -1,5 +1,7 @@
+// Carlos Hernandez
+
 import { TextInput } from "~/components/text-input";
-import { ComponentView } from "./componentViews";
+import { ComponentView } from "../../components/componentViews";
 import { DropdownInput } from "~/components/dropdown-input";
 import { useState } from "react";
 import { Slider } from "~/components/slider";
@@ -7,6 +9,10 @@ import { Checkbox } from "~/components/checkbox";
 import { RadioButton } from "~/components/radio-button";
 
 export default function Component() {
+
+    // This state variable and the handleToggle apply different style properties to the website when a user
+    // selects the show code button so that the rest of the components on the page wrap around and below the
+    // expanded code window
     const [expandedComponent, setExpandedComponent] = useState<string | null>(null);
 
     const handleToggle = (componentName: string) => {
@@ -15,6 +21,7 @@ export default function Component() {
 
     return (
         <div>
+            {/*Website Headers*/}
             <div className="flex flex-row place-content-center">
                 <h1 className="text-4xl font-bold pt-2">
                     General Components
@@ -25,6 +32,7 @@ export default function Component() {
                     Input Fields
                 </h1>
             </div>
+            {/*Component Views, description of how the ComponentView component works is on the componentViews.tsx page*/}
             <div className="flex flex-wrap pl-[30px] pt-[20px] space-x-20">
                 <ComponentView
                     component={

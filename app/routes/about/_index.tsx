@@ -1,3 +1,6 @@
+// Carlos Hernandez
+
+// About Page for the website
 export default function Component() {
     return (
         <div>

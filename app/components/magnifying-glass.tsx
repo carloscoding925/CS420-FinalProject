@@ -1,19 +1,27 @@
+// Carlos Hernandez
+
 import { useRef, useState } from "react";
 
+// Magnifying Glass Component
 export function MagnifyingGlass(props: { label: string; text: string }) {
+    // For the magnifying glass, we essentially want to keep track of two areas of the screen.
+    // The first area is the container where the text is displayed and the second area is the magnifier itself.
     const containerRef = useRef<HTMLDivElement>(null);
     const magnifierRef = useRef<HTMLDivElement>(null);
     const [magnifierStyle, setMagnifierStyle] = useState<React.CSSProperties>({ display: 'none' });
 
+    // This function checks where the cursor currently is. If we're inside the component box, the magnifier will appear.
     const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
         const container = containerRef.current;
         const magnifier = magnifierRef.current;
         if (!container || !magnifier) return;
 
+        // Returns the cursor position relative to the container
         const { left, top, width, height } = container.getBoundingClientRect();
         const x = event.clientX - left;
         const y = event.clientY - top;
 
+        // If we're outside the container, the magnifier will disappear
         if (x < 0 || y < 0 || x > width || y > height) {
             setMagnifierStyle({ display: 'none' });
             return;
@@ -21,6 +29,7 @@ export function MagnifyingGlass(props: { label: string; text: string }) {
         const magnifierSize = 100;
         const zoomLevel = 2;
 
+        // This sets the styling for the magnifier if we're inside the component box
         setMagnifierStyle({
             display: 'block',
             left: `${x - magnifierSize / 2}px`,
@@ -32,15 +41,18 @@ export function MagnifyingGlass(props: { label: string; text: string }) {
         });
     };
 
+    // This function makes the magnifier disappear when the cursor leaves the component box
     const handleMouseLeave = () => {
         setMagnifierStyle({ display: 'none' });
     };
 
     return (
         <div className="flex flex-col">
+            {/* This is the label for the magnifying glass */}
             <label className="text-lg font-bold">
                 {props.label}
             </label>
+            {/* This is the container which holds the text we want to magnify */}
             <div
                 ref={containerRef}
                 onMouseMove={handleMouseMove}
@@ -63,6 +75,7 @@ export function MagnifyingGlass(props: { label: string; text: string }) {
                         transformOrigin: 'top-left',
                     }}
                 >
+                    {/* This is the styling for the magnifier */}
                     <div style={({ fontSize: '16px', lineHeight: '1.5', position: 'absolute', top: '', left: '' })}>
                         {props.text}
                     </div>

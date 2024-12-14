@@ -1,3 +1,5 @@
+// Carlos Hernandez
+
 import {
   Links,
   Meta,
@@ -12,6 +14,7 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import Sidebar from "./components/sidebar";
 
+// This is the root component for the app
 export default function Component() {
   return (
     <html lang="en">
@@ -24,6 +27,7 @@ export default function Component() {
       <body className="flex flex-col min-h-screen">
         <ScrollRestoration />
         <Scripts />
+        {/* The Header, Sidebar, and Footer components are always displayed, regardless of where we are in the website */}
         <div className="shrink-0">
           <Header />
         </div>
@@ -41,6 +45,7 @@ export default function Component() {
   );
 }
 
+// If the user encounters an error, display a 404 page
 export function ErrorBoundary() {
   const error = useRouteError();
 
