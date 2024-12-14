@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ScreenReader } from "~/components/screen-reader";
 import { ComponentView } from "./componentViews";
+import { ImageRecolorer } from "~/components/image-recolorer";
 
 export default function Component() {
     const [expandedComponent, setExpandedComponent] = useState<string | null>(null);
@@ -54,6 +55,21 @@ export default function Component() {
                     `}
                     onToggle={() => handleToggle('ScreenReader')}
                     isExpanded={expandedComponent === 'ScreenReader'}
+                />
+                <ComponentView
+                    component={
+                        <ImageRecolorer
+                            label="Image Recolorer Component"
+                            src="/beach.jpeg"
+                            alt="A tropical beach"
+                            type="red-green"
+                        />
+                    }
+                    code={`
+
+                    `}
+                    onToggle={() => handleToggle('ImageRecolorer')}
+                    isExpanded={expandedComponent === 'ImageRecolorer'}
                 />
             </div>
         </div>
