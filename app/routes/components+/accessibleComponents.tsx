@@ -3,6 +3,7 @@ import { ScreenReader } from "~/components/screen-reader";
 import { ComponentView } from "./componentViews";
 import { ImageRecolorer } from "~/components/image-recolorer";
 import { SpeechToText } from "~/components/speech-to-text";
+import { MagnifyingGlass } from "~/components/magnifying-glass";
 
 export default function Component() {
     const [expandedComponent, setExpandedComponent] = useState<string | null>(null);
@@ -151,16 +152,18 @@ export default function Component() {
                 />
                 <ComponentView
                     component={
-                        <SpeechToText
-                            label="Speech to Text Component"
+                        <MagnifyingGlass
+                            label="Magnifying Glass Component"
+                            text="This is the Magnifying Glass Component."
                         />
                     }
                     code={`
-                        hello
+
                     `}
-                    onToggle={() => handleToggle('SpeechToText')}
-                    isExpanded={expandedComponent === 'SpeechToText'}
+                    onToggle={() => handleToggle('MagnifyingGlass')}
+                    isExpanded={expandedComponent === 'MagnifyingGlass'}
                 />
+
             </div>
         </div>
     )
