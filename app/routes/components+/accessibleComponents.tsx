@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ScreenReader } from "~/components/screen-reader";
 import { ComponentView } from "./componentViews";
 import { ImageRecolorer } from "~/components/image-recolorer";
+import { SpeechToText } from "~/components/speech-to-text";
 
 export default function Component() {
     const [expandedComponent, setExpandedComponent] = useState<string | null>(null);
@@ -147,6 +148,18 @@ export default function Component() {
                     `}
                     onToggle={() => handleToggle('ImageRecolorer')}
                     isExpanded={expandedComponent === 'ImageRecolorer'}
+                />
+                <ComponentView
+                    component={
+                        <SpeechToText
+                            label="Speech to Text Component"
+                        />
+                    }
+                    code={`
+                        hello
+                    `}
+                    onToggle={() => handleToggle('SpeechToText')}
+                    isExpanded={expandedComponent === 'SpeechToText'}
                 />
             </div>
         </div>
