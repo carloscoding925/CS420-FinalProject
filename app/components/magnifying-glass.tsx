@@ -26,9 +26,9 @@ export function MagnifyingGlass(props: { label: string; text: string }) {
             left: `${x - magnifierSize / 2}px`,
             top: `${y - magnifierSize / 2}px`,
             backgroundPosition: `-${x * zoomLevel - magnifierSize / 2}px -${y * zoomLevel - magnifierSize / 2}px`,
-            width: `${magnifierSize}px`,
-            height: `${magnifierSize}px`,
-            backgroundSize: `${width * zoomLevel}px ${height * zoomLevel}px`
+            backgroundColor: 'white',
+            backgroundSize: `${width * zoomLevel}px ${height * zoomLevel}px`,
+            backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="${width * zoomLevel}" height="${height * zoomLevel}"><foreignObject width="100%" height="100%"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:16px">${props.text}</div></foreignObject></svg>')`
         });
     };
 
@@ -37,7 +37,7 @@ export function MagnifyingGlass(props: { label: string; text: string }) {
     };
 
     return (
-        <div>
+        <div className="flex flex-col">
             <label className="text-lg font-bold">
                 {props.label}
             </label>
@@ -45,7 +45,7 @@ export function MagnifyingGlass(props: { label: string; text: string }) {
                 ref={containerRef}
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
-                style={{ position: 'relative', border: '1px solid gray', padding: '10px', width: '300px', height: '200px', overflow: 'hidden' }}
+                style={{ position: 'relative', border: '1px solid gray', padding: '10px', width: '300px', height: '200px', overflow: 'hidden', display: 'inline-block' }}
             >
                 <div style={{ fontSize: '16px', lineHeight: '1.5' }}>
                     {props.text}
@@ -59,12 +59,11 @@ export function MagnifyingGlass(props: { label: string; text: string }) {
                         border: '2px solid black',
                         background: `white`,
                         pointerEvents: 'none',
-                        overflow: 'hidden',
                         transform: 'scale(2)',
-                        transformOrigin: 'top left',
+                        transformOrigin: 'top-left',
                     }}
                 >
-                    <div style={({ fontSize: '16px', lineHeight: '1.5', position: 'absolute', top: '-50%', left: '-50%' })}>
+                    <div style={({ fontSize: '16px', lineHeight: '1.5', position: 'absolute', top: '', left: '' })}>
                         {props.text}
                     </div>
                 </div>
